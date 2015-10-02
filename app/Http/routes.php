@@ -16,5 +16,10 @@ Route::get('/', function () {
     return redirect()->route('sign_up');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+
+
 Route::get('auth/register', ['as' => 'sign_up', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('auth/register', 'Auth\AuthController@postRegister');
