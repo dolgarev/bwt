@@ -1,34 +1,44 @@
 <!-- resources/views/auth/register.blade.php -->
 
-<form method="POST" action="/auth/register">
-    {!! csrf_field() !!}
-
-    <div>
-        First Name
-        <input type="text" name="first_name" value="{{ old('first_name') }}">
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
+@endif
 
-    <div>
-        Last Name
-        <input type="text" name="last_name" value="{{ old('last_name') }}">
-    </div>
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+<!--
+    Forms & HTML
+    [http://laravelcollective.com/docs/5.1/html]
+-->
+{!! Form::open(array('url' => '/auth/register')) !!}
+    {!! Form::label('first_name', 'First Name') !!}
+    {!! Form::text('first_name', old('first_name')) !!}
+    <br>
+    
+    {!! Form::label('last_name', 'Last Name') !!}
+    {!! Form::text('last_name', old('last_name')) !!}
+    <br>
+    
+    {!! Form::label('gender', 'Gender') !!}
+    {!! Form::select('gender', ['male' => 'Male', 'female' => 'Female'], old('gender'), ['placeholder' => 'Select your option']) !!}
+    <br>
+    
+    {!! Form::label('email', 'Email') !!}
+    {!! Form::email('email', old('email')) !!}
+    <br>
 
-    <div>
-        Password
-        <input type="password" name="password">
-    </div>
+    {!! Form::label('password', 'Password') !!}
+    {!! Form::password('password') !!}
+    <br>
 
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
+    {!! Form::label('password_confirmation', 'Confirm Password') !!}
+    {!! Form::password('password_confirmation') !!}
+    <br>
 
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
+    {!! Form::submit('Sign Up') !!}
+{!! Form::close() !!}

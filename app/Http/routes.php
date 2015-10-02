@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->route('sign_up');
 });
 
-Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::get('auth/register', ['as' => 'sign_up', 'uses' => 'Auth\AuthController@getRegister']);
 Route::post('auth/register', 'Auth\AuthController@postRegister');
