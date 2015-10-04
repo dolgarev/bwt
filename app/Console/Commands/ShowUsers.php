@@ -39,13 +39,15 @@ class ShowUsers extends Command
      */
     public function handle()
     {
+        $fields = ['id', 'first_name', 'last_name', 'gender', 'email'];
+        
         $gender = $this->argument('gender');
         
         if (is_null($gender)) {
-            $users = UserModel::all(['id', 'first_name', 'last_name', 'gender', 'email']);    
+            $users = UserModel::all($fields);    
         }
         elseif (in_array($gender, ['male', 'female'])) {
-            $users = UserModel::where('gender', $gender)->select('id', 'first_name', 'last_name', 'gender', 'email')->get();
+            $users = UserModel::where('gender', $gender)->select($fields)->get();
         }
         else {
             return $this->error('Received invalid argument: ' . $gender);
