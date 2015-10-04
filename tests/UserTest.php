@@ -24,6 +24,6 @@ class UserTest extends TestCase
             ->type('test123', 'password_confirmation')
             ->press('Sign Up')
             ->seeInDatabase('users', ['email' => 'olsingle@mail.ru'])
-            ->see('Laravel 5');
+            ->see('Hello and Welcome!');
     }
 }
