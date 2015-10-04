@@ -5,23 +5,26 @@ html, body {
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    display: table;
     font-weight: 100;
-    font-family: 'Lato';
 }
 
 .container {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    width: 100%;
 }
 
 .content {
-    text-align: center;
-    display: inline-block;
+    margin-top: 4rem;
 }
 
 .title {
     font-size: 96px;
+}
+
+[data-errors] {
+    margin-bottom: 0;
+}
+
+[data-errors] > li {
+    color: red !important;
+    font-size: 90%;
 }
